@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="./assests/img/icons8-stopwatch-96.png" type="imagefx-icon">
+
+<title>Stopwatch </title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="stopwatch">
+  <video id="backgroundVideo" autoplay loop muted>
+    <source src="./assests/video/sea.mp4" type="video/mp4">
+    
+  </video>
+  <div id="display">00:00.00</div>
+  <div class="buttons">
+    <button id="start">Start</button>
+    <button id="lap" disabled>Lap</button>
+    <button id="reset" disabled>Reset</button>
+  </div>
+  <ul id="laps"></ul>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
