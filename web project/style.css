@@ -1,0 +1,178 @@
+:root {
+  --bg-light: oklch(83.074% 0.01006 16.844 / 0.744); --bg-dark: rgb(206, 205, 205);
+  --text-light: #333; --text-dark: #eeeeee;
+  --primary: #e67e22;
+}
+* { box-sizing: border-box; margin:0; padding:0;}
+body {
+  font-family: sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: .3s;
+}
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+.section {
+  scroll-snap-align: start;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+/* Intro background */
+.bg-video {
+  position:absolute; top:0; left:0;
+  width:100%; height:100%; object-fit:cover;
+  z-index:-1;
+}
+.intro-overlay {
+  text-align:center; color:#fff;
+  text-shadow:0 0 5px rgba(0,0,0,0.7);
+}
+.intro-overlay h1 {
+  font-size:3rem;
+  animation:fadeInDown .8s ease-out;
+}
+.intro-overlay p {
+  font-size:1.2rem;
+  animation:fadeInUp .8s ease-out;
+}
+
+/* Navigation */
+.nav {
+  position:fixed; top:0; width:100%;
+  display:flex; justify-content:space-between;
+  align-items:center; padding:1rem 2rem ;
+  z-index:2;
+  background: rgba(255,255,255,0.8);
+}
+body.dark .nav { background: rgba(20,20,20,0.8); }
+.nav-links {
+  display:flex; gap:1rem;
+}
+.nav-links a {
+  text-decoration:none; color:inherit;
+  padding:.5rem 1rem; border-radius:5px;
+  transition:.3s;
+}
+.nav-links a:hover {
+  background: var(--primary); color:#fff;
+}
+.burger {
+  display:none;
+  flex-direction:column; gap:4px;
+  background:none; border:none; cursor:pointer;
+}
+.burger .line {
+  width:25px; height:3px; background:currentColor;
+  transition:.3s;
+}
+.burger.is-active .line:nth-child(1) {
+  transform:rotate(45deg) translate(5px,5px);
+}
+.burger.is-active .line:nth-child(2) { opacity:0; }
+.burger.is-active .line:nth-child(3) {
+  transform:rotate(-45deg) translate(5px,-5px);
+}
+/* Footer Styles */
+.footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: left;
+  align-items: right;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #796fb7;
+  
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+
+/* Pet cards */
+.cards {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:1rem;
+  width:100%; max-width:1000px;
+}
+.card {
+  background:rgb(251, 250, 250);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px rgba(237, 236, 236, 0.1);
+  transition:transform .3s, box-shadow .3s;
+}
+.card img { width:250px; display:block;  height: 300px; margin:10px}
+.card h3 {
+  padding:1rem;
+  font-size:1.1rem;
+}
+.card:hover {
+  transform:scale(1.05);
+  box-shadow:0 8px rgba(0,0,0,0.2);
+}
+
+/* Info sections */
+.info {
+  max-width:600px;
+  text-align:center;
+}
+
+/* Dark mode toggle */
+#mode-toggle {
+  background:none; border:none; font-size:1.2rem;
+  cursor:pointer; color:inherit;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity:0; transform:translateY(-20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* Responsive nav */
+@media(max-width:768px) {
+  .nav-links { display:none; flex-direction:column; background:inherit; position:absolute; top:60px; right:20px; }
+  .nav-links.active { display:flex; }
+  .burger { display:flex; }
+}
